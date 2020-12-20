@@ -2,7 +2,6 @@ import Styled from 'styled-components'
 
 export const FancyHeader = Styled.h1`
   color: #fffef9;
-  margin-bottom: -1em;
   box-shadow: inset 0 -0.5em 0 rgb(212 189 37 / 0.6);
   font-size: 4.0em;
   display: inline;

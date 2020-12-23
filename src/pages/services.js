@@ -3,21 +3,10 @@ import Layout from '../components/layout'
 import { FancyHeader, FancySubheader, SectionText } from '../components/typography'
 import { faClipboard, faChartLine, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import IconColumn from '../components/iconColumn'
-import { Link } from 'gatsby'
 import { Row, Col, Container } from 'react-bootstrap'
-import { FancyContainer } from '../components/containers'
-import Styled from 'styled-components'
+import { OverlayContainer } from '../components/containers'
+import { FancyLink } from '../components/buttons'
 
-
-const OverlayContainer = Styled(FancyContainer)`
-    background: url(${props => props.image}) rgba(33,37,41,1.0);
-    background-position: top;
-    background-blend-mode: overlay;
-    background-size: cover;
-    justify-content: center;
-    height: auto;
-`
 
 export default function Services() {
     const services = [
@@ -40,13 +29,12 @@ export default function Services() {
       <Layout>
         <OverlayContainer
           fluid
-          className="py-5"
           image={
             "https://images.pexels.com/photos/260409/pexels-photo-260409.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
           }
         >
           <Row className="justify-content-center">
-            <Col xs={10} md={8}>
+            <Col xs={10} md={8} className="text-center">
               <FancyHeader className="text-center d-block my-5">
                 We are testing specialists
               </FancyHeader>
@@ -60,28 +48,24 @@ export default function Services() {
             </Col>
           </Row>
         </OverlayContainer>
-        <Container fluid>
+        <Container>
           {services.map((service, index) => (
-            <Row key={index} className="justify-content-center">
-              <IconColumn
-                handle={service.handle}
-                icon={service.icon}
-                xs={12}
-                md={3}
-                dark={false}
-              />
-              <Col xs={12} md={7} className="my-5">
+            <Row key={index} className="justify-content-center align-items-center w-75 mx-auto">
+              <Col xs={12} md={3}>
+              <FontAwesomeIcon icon={service.icon} className="text-warning m-auto d-block" size={"10x"}/>
+              </Col>
+              <Col xs={12} md={9} className="my-5">
                 <FancySubheader className="text-dark m-0 mb-3">
                   {service.name}
                 </FancySubheader>
                 <SectionText>{service.description}</SectionText>
-                <Link to={service.handle}>
+                <FancyLink to={service.handle}>
                   Learn more{" "}
                   <FontAwesomeIcon
                     icon={faArrowRight}
                     className="text-warning"
                   />
-                </Link>
+                </FancyLink>
               </Col>
             </Row>
           ))}

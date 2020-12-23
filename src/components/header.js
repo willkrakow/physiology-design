@@ -1,38 +1,79 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useEffect } from "react"
 // import Styled from 'styled-components'
 import { Nav, Navbar } from 'react-bootstrap'
-import Styled from "styled-components"
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import styled from "styled-components"
+import { StaticQuery, graphql } from 'gatsby'
 
-const FancyLink = Styled(Nav.Link).attrs(props => ({
-  className: "nav-link text-light mx-3",
-}))`
+
+const LinkWrapper = styled.div`
   transition: 0.3s;
+  box-shadow: ${props => (props.active ? "inset 0 -4px #F04848" : null)};
   &:hover {
-    box-shadow: inset 0 -4px #ffc107;
+    box-shadow: inset 0 -4px #f04848;
   }
 `
-
+function checkActiveLink(link) {
+  if (link === "/") {
+    return false
+  } else if (typeof window !== "undefined") {
+    return window.location.pathname.includes(link)
+  } else {
+    return false
+  }
+}
 
 const Header = ({ siteTitle }) => (
-  <Navbar bg="dark" expand="lg">
-    <Navbar.Brand href="#home">Physiology Design</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end px-5" >
-      <Nav className="mr-auto">
-        <FancyLink as={Link} to="/" >
-            Home
-        </FancyLink>
-        <FancyLink as={Link} to="/services">
-            Services
-        </FancyLink>
-        <FancyLink as={Link} to="/plans-strategies">
-          Plans / Strategies
-        </FancyLink>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+
+  <StaticQuery
+    query={graphql`
+      query SiteQuery {
+        site {
+          siteMetadata {
+            title
+            menuLinks {
+              name
+              link
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <Navbar bg="dark" expand="lg">
+        <AniLink to="/">
+          <Navbar.Brand className="text-light fw-bold px-3">
+            Physiology Design
+          </Navbar.Brand>
+        </AniLink>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className="justify-content-end px-5"
+        >
+          <Nav className="mr-auto">
+            {data.site.siteMetadata.menuLinks.map((menuItem, index) => (
+              <LinkWrapper
+                active={
+                  checkActiveLink(menuItem.link)
+                }
+                key={index}
+              >
+                <AniLink
+                  className="text-light nav-link d-inline-block mx-3"
+                  fade
+                  to={menuItem.link}
+                >
+                  {menuItem.name}
+                </AniLink>
+              </LinkWrapper>
+            ))}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    )}
+  />
 )
 
 Header.propTypes = {

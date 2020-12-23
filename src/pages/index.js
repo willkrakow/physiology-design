@@ -1,58 +1,66 @@
 import React from "react"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Button, Col, Row } from "react-bootstrap"
-import Styled from 'styled-components'
-import { FancyHeader, FancySubheader, SectionText, SectionTitle } from '../components/typography'
-import { FancyContainer } from '../components/containers'
-
-const FancyWrapper = Styled.div`
-width: 50%;
-@media (max-width: 590px) {
-  width: 100%;
-}
-`
-
-const FancyButton = Styled(Button)`
-background-color: #ffc107;
-color: #1b1804;
-margin: 0.25em;
-margin-top: 1em;
-@media (max-width: 590px) {
-    margin: 1em auto;
-    display: block;
-  }
-`
+import { Col, Row } from "react-bootstrap"
+import { HeroHeader, SectionText, SectionTitle } from '../components/typography'
+import { FancyContainer, FancyWrapper, Hero } from '../components/containers'
+import Running from '../images/running.svg'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faRunning, faBus } from "@fortawesome/free-solid-svg-icons"
+import { HeroButton } from '../components/buttons'
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <FancyContainer
-      fluid
-      image={
-        "https://images.pexels.com/photos/207779/pexels-photo-207779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-      }
-    >
+    <Hero fluid>
       <FancyWrapper>
-        <FancyHeader>Metabolic Test Specialists</FancyHeader>
-        <FancySubheader>Affordable | Mobile | Fast</FancySubheader>
-        <FancyButton className="btn-warning btn-lg">Start today</FancyButton>
+        <HeroHeader>
+          Your training.
+          <br />
+          Your body.
+          <br />
+          <span className="text-info">Optimized.</span>
+        </HeroHeader>
+        <HeroButton>Start today</HeroButton>
       </FancyWrapper>
-    </FancyContainer>
-    <FancyContainer fluid className="text-left" height={"auto"}>
-      <SectionTitle>We are a mobile physiology service</SectionTitle>
-      <SectionText>
+      <Running />
+    </Hero>
+    <FancyContainer fluid height={"auto"}>
+      <SectionTitle className="text-center">We are a mobile physiology service</SectionTitle>
+      <SectionText className="text-center">
         We are exercise physiologists with lots of experience with exercise
         testing under our belts. We want to bring high-end science to you and
         your training. Typically, these services are expensive, and you might
         get tested a few times. We want to dramatically bring down the cost so
         you can get repeated testing done and monitor your fitness.
       </SectionText>
+    </FancyContainer>
+    <FancyContainer height={"auto"}>
       <Row>
-        <Col xs={12}></Col>
-        <Col xs={12}></Col>
-        <Col xs={12}></Col>
+        <Col xs={12} md={4} className="text-center">
+          <FontAwesomeIcon icon={faBus} size={"9x"} className="text-info" />
+          <SectionTitle className="text-dark">Mobile</SectionTitle>
+          <SectionText>
+            We'll come to you. No matter where you are (both figuratively and
+            literally).
+          </SectionText>
+        </Col>
+        <Col xs={12} md={4} className="text-center">
+          <FontAwesomeIcon icon={faRunning} size={"9x"} className="text-info" />
+          <SectionTitle className="text-dark">Validated</SectionTitle>
+          <SectionText>
+            We'll come to you. No matter where you are (both figuratively and
+            literally).
+          </SectionText>
+        </Col>
+        <Col xs={12} md={4} className="text-center">
+          <FontAwesomeIcon icon={faBus} size={"9x"} className="text-info" />
+          <SectionTitle className="text-dark">Mobile</SectionTitle>
+          <SectionText>
+            We'll come to you. No matter where you are (both figuratively and
+            literally).
+          </SectionText>
+        </Col>
       </Row>
     </FancyContainer>
   </Layout>

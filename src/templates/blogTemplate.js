@@ -18,8 +18,7 @@ export default function Template({
             {frontmatter.date}
           </FancySubheader>
           <SectionText
-            className="text-dark"
-            className="blog-post-content"
+            className="blog-post-content text-dark"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>

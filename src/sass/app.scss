@@ -1,4 +1,12 @@
-$primary: #1b1804;
+
+
+$primary: #0EEDED;
 $light: #fffef9;
+$danger: #F50A0A;
+$warning: #F04848;
+$info: #6a018a;
+.bg-gradient-orange {
+    background-image: linear-gradient(to right, $warning, $warning 40%, $light 100%);
+}
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

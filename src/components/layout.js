@@ -8,9 +8,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import Styled from 'styled-components'
 
 import Header from "./header"
 import "../sass/app.scss"
+
+const Main = Styled.main`
+max-width: 100vw;
+overflow: hidden;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,7 +33,7 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div>
-        <main>{children}</main>
+        <Main>{children}</Main>
         <footer style={{
           marginTop: `2rem`
         }}>

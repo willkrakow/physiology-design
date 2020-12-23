@@ -1,8 +1,34 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Physiology Design`,
+    description: `Mobile exercise physiology testing for anyone, anywhere.`,
+    author: `William Krakow`,
+    menuLinks: [
+      {
+        name: `Home`,
+        link: `/`,
+      },
+      {
+        name: `Services`,
+        link: `/services`,
+      },
+      {
+        name: `Plans & Strategies`,
+        link: `/plans-strategies`,
+      },
+      {
+        name: `Contact`,
+        link: `/contact`,
+      },
+      {
+        name: `People`,
+        link: `/people`,
+      },
+      {
+        name: `Blog`,
+        link: `/blog`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -37,6 +63,15 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     `gatsby-plugin-sass`,
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images/, // See below to configure properly
+        },
+      },
+    },
+    `gatsby-plugin-transition-link`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

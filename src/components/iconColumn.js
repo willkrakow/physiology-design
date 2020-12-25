@@ -15,7 +15,7 @@ const IconSection = Styled.div`
 
 export default function IconColumn({ name, handle, icon}) {
     return (
-      <IconSection className="my-5">
+      <IconSection className="my-4">
         <Link to={handle}>
           <FontAwesomeIcon
             icon={icon}

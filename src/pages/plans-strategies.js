@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Layout from '../components/layout'
 import { faRunning, faWeight, faBalanceScale, faMedal } from '@fortawesome/free-solid-svg-icons'
-import { FancyHeader } from '../components/typography'
+import { FancyHeader, FancySubheader } from '../components/typography'
 import IconColumn from '../components/iconColumn'
 import { ImageContainer } from '../components/containers'
 
@@ -43,10 +43,11 @@ const PlansStrategies = () => {
       <Layout>
         <ImageContainer fluid className="bg-dark py-5" bgimage={bgImage}>
           <Row className="justify-content-center">
-            <Col xs={10} md={6}>
-              <FancyHeader className="text-center d-block my-5 text-center">
+            <Col xs={10} md={6} className="text-center">
+              <FancyHeader className="d-block my-5 text-light">
                 What's your goal?
               </FancyHeader>
+              <FancySubheader className="text-muted">Or even just something you kinda sorta want to do, perhaps. Eventually.</FancySubheader>
             </Col>
           </Row>
 

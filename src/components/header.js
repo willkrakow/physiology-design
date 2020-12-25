@@ -1,11 +1,11 @@
 import PropTypes from "prop-types"
-import React, { useEffect } from "react"
+import React from 'react'
 // import Styled from 'styled-components'
 import { Nav, Navbar } from 'react-bootstrap'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import styled from "styled-components"
 import { StaticQuery, graphql } from 'gatsby'
-
+import { BrandLogo } from '../components/typography'
 
 const LinkWrapper = styled.div`
   transition: 0.3s;
@@ -25,7 +25,6 @@ function checkActiveLink(link) {
 }
 
 const Header = ({ siteTitle }) => (
-
   <StaticQuery
     query={graphql`
       query SiteQuery {
@@ -41,10 +40,10 @@ const Header = ({ siteTitle }) => (
       }
     `}
     render={data => (
-      <Navbar bg="dark" expand="lg">
-        <AniLink to="/">
-          <Navbar.Brand className="text-light fw-bold px-3">
-            Physiology Design
+      <Navbar bg="dark" expand="lg" className="p-3">
+        <AniLink to="/" className="text-warning">
+          <Navbar.Brand className="text-light fw-light px-3 fs-3">
+            Physiology <BrandLogo>Design</BrandLogo>
           </Navbar.Brand>
         </AniLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -54,12 +53,7 @@ const Header = ({ siteTitle }) => (
         >
           <Nav className="mr-auto">
             {data.site.siteMetadata.menuLinks.map((menuItem, index) => (
-              <LinkWrapper
-                active={
-                  checkActiveLink(menuItem.link)
-                }
-                key={index}
-              >
+              <LinkWrapper active={checkActiveLink(menuItem.link)} key={index}>
                 <AniLink
                   className="text-light nav-link d-inline-block mx-3"
                   fade

@@ -1,29 +1,57 @@
-import React from 'react'
-// import Styled from 'styled-components'
+import React, { useState } from 'react'
 import { Container, Form, Col, Row, Button } from 'react-bootstrap'
 import Layout from '../components/layout'
-import { FancySubheader, FancyHeader } from '../components/typography'
+import { navigate } from 'gatsby'
+import { HeaderContainer } from '../components/containers'
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
 
 export default function Contact() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...formState,
+      }),
+    })
+    .then(() => navigate(form.getAttribute('action')))
+    .catch((error) => alert(error))
+  }
+
+  const [ formState, setFormState ] = useState({});
+
+  const handleChange = (e) => {
+    setFormState({...formState, [e.target.name]: e.target.value })
+  }
+
     return (
       <Layout>
-        <Container fluid className="bg-dark py-5">
-          <Row className="justify-content-center">
-            <Col xs={10} md={6}>
-              <FancyHeader className="text-center d-block my-5 text-center">
-                Let's Chat
-              </FancyHeader>
-              <FancySubheader className="text-center text-muted">Maybe over beers?</FancySubheader>
-            </Col>
-          </Row>
+        <Container fluid className="bg-dark">
+          <HeaderContainer header="Let's chat" subheader="Maybe over some beers?" bg="dark" />
           <Row className="justify-content-center p-5">
             <Col xs={6}>
-              <Form>
+              <Form
+                method="POST"
+                name="contact"
+                action="/thanks/"
+                onSubmit={handleSubmit}
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="contact" />
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control
-                    className="bg-dark"
+                    onChange={handleChange}
+                    className="bg-dark text-light"
                     type="email"
                     placeholder="Enter email"
                   />
@@ -34,7 +62,8 @@ export default function Contact() {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
-                    className="bg-dark"
+                    onChange={handleChange}
+                    className="bg-dark text-light"
                     type="text"
                     placeholder="Your name"
                   />
@@ -42,18 +71,21 @@ export default function Contact() {
                 <Form.Group controlId="formBasicSubject">
                   <Form.Label>Subject</Form.Label>
                   <Form.Control
-                    className="bg-dark"
+                    onChange={handleChange}
+                    className="bg-dark text-light"
+                    name="subject"
                     type="text"
                     placeholder={`e.g., "I need help!"`}
                   />
                 </Form.Group>
                 <Form.Group controlId="formBasicMessage">
                   <Form.Label>Message</Form.Label>
-                  <Form.Control
-                    className="bg-dark"
-                    type="textfield"
+                  <textarea
+                    onChange={handleChange}
+                    className="bg-dark form-control text-light"
                     placeholder="What's on your mind?"
-                  />
+                    rows="3"
+                  ></textarea>
                 </Form.Group>
                 <Button
                   variant="warning"

@@ -44,7 +44,7 @@ As founder and owner, Kerry is happy to start Physiology Design, as he has reali
             </Col>
           </Row>
           {person_data.map((person, index) => (
-            <Row className="w-75 mx-auto">
+            <Row className="w-75 mx-auto" key={index}>
               <Col xs={12} md={4}>
                 <p>Image will go here</p>
               </Col>

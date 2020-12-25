@@ -1,7 +1,7 @@
 
 
 $primary: #0EEDED;
-$light: #fffef9;
+$light: rgb(255, 251, 250);
 $danger: #F50A0A;
 $warning: #F04848;
 $info: #6a018a;
@@ -10,3 +10,8 @@ $info: #6a018a;
 }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Pacifico&display=swap');
+
+*, body {
+    font-family: 'Monserrat', sans-serif;
+}

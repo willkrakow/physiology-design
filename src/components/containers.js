@@ -1,8 +1,10 @@
-import Styled from 'styled-components'
-import { Container } from 'react-bootstrap'
+import styled from 'styled-components'
+import { Container, Row, Col } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import React from 'react'
+import { FancyHeader, FancySubheader } from './typography'
 
-export const FancyContainer = Styled(Container).attrs(props => ({
+export const FancyContainer = styled(Container).attrs(props => ({
   className: "py-5"
 }))`
   background: ${props => (props.image ? `url(${props.image})` : null)};
@@ -27,7 +29,7 @@ FancyContainer.propTypes = {
     bgPosition: PropTypes.string,
 }
 
-export const OverlayContainer = Styled(FancyContainer)`
+export const OverlayContainer = styled(FancyContainer)`
     background: url(${props => props.image}) rgba(33,37,41,1.0);
     background-position: top;
     background-blend-mode: overlay;
@@ -39,7 +41,7 @@ OverlayContainer.propTypes = {
   image: PropTypes.string,
 }
 
-export const Hero = Styled(Container).attrs(props => ({
+export const Hero = styled(Container).attrs(props => ({
   className: "bg-gradient-orange",
 }))`
 height: 80vh;
@@ -47,19 +49,51 @@ display: flex;
 justify-content: flex-start;
 align-items: center;`
 
-export const FancyWrapper = Styled.div`
+export const FancyWrapper = styled.div`
 width: 50%;
 @media (max-width: 590px) {
   width: 100%;
 }
 `
 
-export const ImageContainer = Styled(Container).attrs(props => ({
-  className: "py-5 bg-dark",
+export const ImageContainer = styled(Container).attrs(props => ({
+  className: "py-5",
   fluid: true,
 }))`
   background-image: ${props => (props.bgimage ? `url(${props.bgimage})` : `rgba(0,0,0,0.0)`)};
   background-size: cover;
   background-blend-mode: overlay;
   transition: background-image 0.4s ease-in-out;
+`
+
+ImageContainer.propTypes = {
+  bgimage: PropTypes.string,
+}
+
+export const HeaderContainer = ({header, subheader, bg}) => (
+<Container className={`justify-content-center py-5 ${bg === "dark" ? null : "bg-light"}`} height={"auto"}>
+  <Row className="justify-content-center">
+    <Col xs={10} md={6}>
+      <FancyHeader className={`text-center d-block my-5 text-center ${bg === "dark" ? "text-light" : "text-dark"}`}>
+      {header}
+      </FancyHeader>
+      <FancySubheader className="text-center text-muted">
+        {subheader}
+      </FancySubheader>
+    </Col>
+  </Row>
+</Container>
+)
+
+HeaderContainer.propTypes = {
+  header: PropTypes.string,
+  subheader: PropTypes.string,
+  bg: PropTypes.string,
+}
+
+export const ArrowContainer = styled(Container).attrs(props => ({
+  className: "bg-dark p-4",
+}))`
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 74%, 49% 100%, 0 74%);
 `

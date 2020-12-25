@@ -1,10 +1,12 @@
 backend:
-  name: github
+  name: git-gateway
   repo: willkrakow/physiology-design
   branch: main
 
 media_folder: static/assets
 public_folder: /assets
+
+publish_mode: editorial_workflow
 
 collections:
   - name: blog

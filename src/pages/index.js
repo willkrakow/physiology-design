@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Col, Row, Container } from "react-bootstrap"
-import { HeroHeader, SectionText, SectionTitle } from '../components/typography'
-import { FancyContainer, FancyWrapper, Hero } from '../components/containers'
+import { HeroHeader, SectionText, SectionTitle, FancyHeader } from '../components/typography'
+import { FancyContainer } from '../components/containers'
 import Running from '../images/running.svg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBus, faArrowRight, faRunning, faBiking, faWeight } from "@fortawesome/free-solid-svg-icons"
@@ -80,26 +80,30 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Hero fluid>
-        <FancyWrapper>
-          <HeroHeader>
-            Your training.
-            <br />
-            Your body.
-            <br />
-            <span className="text-info">Optimized.</span>
-          </HeroHeader>
-          <HeroButton>Start today</HeroButton>
-        </FancyWrapper>
-        <Running />
-      </Hero>
-      <ArrowContainer fluid>
-        <Row className="justify-content-center p-5">
-          <Col xs={12} md={6} className="text-center">
-            <SectionTitle className="text-center text-light">
+      <Container fluid className="bg-gradient-orange">
+        <Row className="align-items-start align-items-md-center">
+          <Col xs={12} md={6}>
+            <HeroHeader>
+              Your training.
+              <br />
+              Your body.
+              <br />
+              <span className="text-info">Optimized.</span>
+            </HeroHeader>
+            <HeroButton>Start today</HeroButton>
+          </Col>
+          <Col xs={12} md={6}>
+            <Running className="w-100 h-100" />
+          </Col>
+        </Row>
+      </Container>
+      <ArrowContainer fluid className="pb-5">
+        <Row className="justify-content-center p-1 p-md-5">
+          <Col xs={12} md={6} className="text-start text-md-center">
+            <SectionTitle className="text-start text-md-center text-light">
               We are a mobile physiology service
             </SectionTitle>
-            <SectionText className="text-center text-muted d-block m-auto">
+            <SectionText className="text-start text-md-center mb-5 text-muted d-block m-auto">
               We are exercise physiologists with lots of experience with
               exercise testing under our belts. We want to bring high-end
               science to you and your training. Typically, these services are
@@ -119,7 +123,11 @@ const IndexPage = () => {
           {[0, 1, 2].map((col, index) => (
             <Col xs={12} md={4} className="text-center" key={index}>
               <BlobWrapper className="my-5">
-                <FontAwesomeIcon icon={faBus} className="text-warning" size={"8x"} />
+                <FontAwesomeIcon
+                  icon={faBus}
+                  className="text-warning"
+                  size={"8x"}
+                />
               </BlobWrapper>
               <SectionTitle className="text-dark">Mobile</SectionTitle>
               <SectionText>
@@ -179,12 +187,21 @@ const IndexPage = () => {
       </Container>
       <Container className="py-5">
         <Row className="py-5 justify-content-center">
+          <Col xs={12}>
+            <FancyHeader className="text-center text-dark">Testimonials</FancyHeader>
+          </Col>
           {data.map((client, index) => (
-            <Col xs={12} md={3} className="d-flex flex-wrap flex-column align-items-center">
+            <Col
+              xs={12}
+              md={3}
+              className="d-flex flex-wrap flex-column align-items-center my-5"
+            >
               <Circle>
                 <CircleImage src={client.image} alt="Client Testimonial" />
               </Circle>
-              <SectionTitle className="text-center py-3">{client.name}</SectionTitle>
+              <SectionTitle className="text-center py-3">
+                {client.name}
+              </SectionTitle>
               <FontAwesomeIcon
                 icon={client.icon}
                 className="text-warning text-center"

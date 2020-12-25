@@ -43,17 +43,28 @@ const PlansStrategies = () => {
       <Layout>
         <ImageContainer fluid className="bg-dark py-5" bgimage={bgImage}>
           <Row className="justify-content-center">
-            <Col xs={10} md={6} className="text-center">
-              <FancyHeader className="d-block my-5 text-light">
+            <Col xs={12} md={6} className="">
+              <FancyHeader className="d-block my-5 text-light text-center">
                 What's your goal?
               </FancyHeader>
-              <FancySubheader className="text-muted">Or even just something you kinda sorta want to do, perhaps. Eventually.</FancySubheader>
+              <FancySubheader className="text-muted text-center">
+                Or even just something you kinda sorta want to do, perhaps.
+                Eventually.
+              </FancySubheader>
             </Col>
           </Row>
 
-          <Row className="justify-content-center w-50 mx-auto" onMouseLeave={() => setBgImage(null)}  >
+          <Row
+            className="justify-content-center w-100 w-md-50 mx-auto"
+            onMouseLeave={() => setBgImage(null)}
+          >
             {goals.map((goal, index) => (
-              <Col xs={12} md={6} onMouseEnter={() => setBgImage(goal.bgImage)} key={index}>
+              <Col
+                xs={12}
+                md={6}
+                onMouseEnter={() => setBgImage(goal.bgImage)}
+                key={index}
+              >
                 <IconColumn
                   name={goal.name}
                   handle={goal.handle}

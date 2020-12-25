@@ -34,11 +34,11 @@ export default function Services() {
           }
         >
           <Row className="justify-content-center">
-            <Col xs={10} md={8} className="text-center">
-              <FancyHeader className="text-center d-block my-5">
+            <Col xs={12} md={8} className="text-center">
+              <FancyHeader className="text-start text-md-center d-block my-5">
                 We are testing specialists
               </FancyHeader>
-              <FancySubheader>
+              <FancySubheader className="text-start text-md-center">
                 We consider ourselves to be experts in metabolic testing and
                 interpretation. We primarily want to offer testing services and
                 compliment your current coaching or training plan. If you are
@@ -50,9 +50,16 @@ export default function Services() {
         </OverlayContainer>
         <Container>
           {services.map((service, index) => (
-            <Row key={index} className="justify-content-center align-items-center w-75 mx-auto">
+            <Row
+              key={index}
+              className="justify-content-center align-items-center w-75 mx-auto"
+            >
               <Col xs={12} md={3}>
-              <FontAwesomeIcon icon={service.icon} className="text-warning m-auto d-block" size={"10x"}/>
+                <FontAwesomeIcon
+                  icon={service.icon}
+                  className="text-warning m-auto d-block"
+                  size={"10x"}
+                />
               </Col>
               <Col xs={12} md={9} className="my-5">
                 <FancySubheader className="text-dark m-0 mb-3">

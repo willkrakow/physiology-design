@@ -12,16 +12,16 @@ export default function ArticleListItem({ title, date, excerpt, image, slug, ...
 return (
 <Row className="w-100 my-3">
   <Col xs={12} md={3}>
-    <SectionText className="float-end d-inline text-end text-secondary">
+    <SectionText className="text-start text-secondary">
       {moment(date).format("MMMM D")}
     </SectionText>
   </Col>
   <Col xs={12} md={9}>
     <div>
-      <SectionTitle className="text-left d-inline w-50" left>
+      <SectionTitle className="text-start">
         {title}
       </SectionTitle>
-      <SectionText className="text-left d-inline float-start">
+      <SectionText className="text-start">
         {excerpt}
         <strong>
           <span className="text-warning"> | </span>

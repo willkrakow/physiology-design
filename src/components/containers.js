@@ -42,9 +42,8 @@ OverlayContainer.propTypes = {
 }
 
 export const Hero = styled(Container).attrs(props => ({
-  className: "bg-gradient-orange",
+  className: "",
 }))`
-height: 80vh;
 display: flex;
 justify-content: flex-start;
 align-items: center;`
@@ -73,7 +72,7 @@ ImageContainer.propTypes = {
 export const HeaderContainer = ({header, subheader, bg}) => (
 <Container className={`justify-content-center py-5 ${bg === "dark" ? null : "bg-light"}`} height={"auto"}>
   <Row className="justify-content-center">
-    <Col xs={10} md={6}>
+    <Col xs={12} md={6}>
       <FancyHeader className={`text-center d-block my-5 text-center ${bg === "dark" ? "text-light" : "text-dark"}`}>
       {header}
       </FancyHeader>
@@ -94,6 +93,6 @@ HeaderContainer.propTypes = {
 export const ArrowContainer = styled(Container).attrs(props => ({
   className: "bg-dark p-4",
 }))`
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 74%, 49% 100%, 0 74%);
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
 `

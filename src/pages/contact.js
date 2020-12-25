@@ -37,7 +37,7 @@ export default function Contact() {
         <Container fluid className="bg-dark">
           <HeaderContainer header="Let's chat" subheader="Maybe over some beers?" bg="dark" />
           <Row className="justify-content-center p-5">
-            <Col xs={6}>
+            <Col xs={12} md={6}>
               <Form
                 method="POST"
                 name="contact"
@@ -90,7 +90,7 @@ export default function Contact() {
                 <Button
                   variant="warning"
                   type="submit"
-                  className="mx-auto d-block m-3"
+                  className="mx-auto d-block m-3 text-light"
                 >
                   Submit
                 </Button>

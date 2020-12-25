@@ -8,6 +8,7 @@ export const FancyLink = styled(Nav.Link).attrs(props => ({
   text-decoration: none;
   display: inline-block;
   font-size: 1.5rem;
+  padding: 0;
   &:hover {
     box-shadow: inset 0 -4px #F04848;
   }

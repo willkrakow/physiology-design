@@ -44,12 +44,12 @@ As founder and owner, Kerry is happy to start Physiology Design, as he has reali
             </Col>
           </Row>
           {person_data.map((person, index) => (
-            <Row className="w-75 mx-auto" key={index}>
+            <Row className="w-100 w-md-75 mx-auto" key={index}>
               <Col xs={12} md={4}>
                 <p>Image will go here</p>
               </Col>
               <Col xs={12} md={8}>
-          <FancySubheader className="text-light text-left">{person.name}</FancySubheader>
+          <FancySubheader className="text-light text-start">{person.name}</FancySubheader>
           <SectionSubtitle className="text-warning">{person.title}</SectionSubtitle>
           <SectionText className="text-light">{person.description}</SectionText>
               </Col>

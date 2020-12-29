@@ -27,12 +27,6 @@ export const FancyButton = styled(Button).attrs(props => ({
   }
 `
 
-export const SecondaryButton = styled(FancyButton).attrs(props => ({
-  className: "btn-outline-warning btn-lg",
-}))`
-`
-
-
 export const HeroButton = styled(Button).attrs(props => ({
   className: "btn-lg btn-light text-danger fw-bold m-5 mt-0",
 }))``

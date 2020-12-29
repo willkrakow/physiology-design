@@ -5,6 +5,7 @@ import { faRunning, faWeight, faBalanceScale, faMedal } from '@fortawesome/free-
 import { FancyHeader, FancySubheader } from '../components/typography'
 import IconColumn from '../components/iconColumn'
 import { ImageContainer } from '../components/containers'
+import SEO from '../components/seo'
 
 const PlansStrategies = () => {
     const goals = [
@@ -40,6 +41,8 @@ const PlansStrategies = () => {
     const [ bgImage, setBgImage ] = useState(null);
 
     return (
+      <>
+      <SEO title="Plans &amp; Strategies" />
       <Layout>
         <ImageContainer fluid className="bg-dark py-5" bgimage={bgImage}>
           <Row className="justify-content-center">
@@ -75,6 +78,7 @@ const PlansStrategies = () => {
           </Row>
         </ImageContainer>
       </Layout>
+      </>
     )
 }
     

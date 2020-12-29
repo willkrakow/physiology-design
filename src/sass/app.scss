@@ -4,10 +4,12 @@ $primary: #0EEDED;
 $light: rgb(255, 251, 250);
 $danger: #F50A0A;
 $warning: #F04848;
-$info: #6a018a;
+$info: #ebd409;
 .bg-gradient-orange {
-    background-image: linear-gradient(to right, $warning, $warning 40%, $light 100%);
+    background-image: linear-gradient(to right, $danger, $light 70%, $light 100%);
 }
+
+
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Pacifico&display=swap');

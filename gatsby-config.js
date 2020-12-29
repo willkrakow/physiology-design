@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `Physiology Design`,
+    titleTemplate: "%s Training Redefined",
     description: `Mobile exercise physiology testing for anyone, anywhere.`,
     author: `William Krakow`,
+    url: "https://romantic-darwin-f4be26.netlify.app",
     menuLinks: [
       {
         name: `Home`,
@@ -32,6 +34,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -59,6 +62,13 @@ module.exports = {
       options: {
         name: `markdown-pages`,
         path: `${__dirname}/blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-remark`,

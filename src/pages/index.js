@@ -1,31 +1,41 @@
-import React, { useState } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Col, Row, Container } from "react-bootstrap"
-import { HeroHeader, SectionText, SectionTitle, FancyHeader } from '../components/typography'
-import { FancyContainer } from '../components/containers'
-import Running from '../images/running.svg'
+import {
+  HeroHeader,
+  SectionText,
+  SectionTitle,
+  FancyHeader,
+} from "../components/typography"
+import Running from "../images/running.svg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBus, faArrowRight, faRunning, faBiking, faWeight } from "@fortawesome/free-solid-svg-icons"
-import { HeroButton, FancyLink } from '../components/buttons'
+import {
+  faBus,
+  faArrowRight,
+  faRunning,
+  faBiking,
+  faWeight,
+} from "@fortawesome/free-solid-svg-icons"
+import { HeroButton, FancyLink } from "../components/buttons"
 import styled from "styled-components"
-import { Heartbeat, StopWatch } from "../components/animations"
+import { Heartbeat } from "../components/animations"
 import { Link } from "gatsby"
-import { ArrowContainer } from '../components/containers'
+import { ArrowContainer } from "../components/containers"
 
 const Circle = styled.div`
-position: relative;
-width: 150px;
-height: 150px;
-border-radius: 50%;
-overflow: hidden;
-background: transparent;
-display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  display: inline-block;
 `
 
 const CircleImage = styled.img`
-width: 150px;
-height: auto;
+  width: 150px;
+  height: auto;
 `
 
 // const BlobBackground = styled(Blob)`
@@ -37,10 +47,10 @@ height: auto;
 // transform: rotate(${props => props.rotation * 60}deg);
 // `
 const BlobWrapper = styled.span`
-position: relative;
-display: flex;
-justify-content: center;
-align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const data = [
@@ -75,12 +85,10 @@ const data = [
 ]
 
 const IndexPage = () => {
-
-  const [ isActive, setIsActive ] = useState(true);
   return (
     <Layout>
       <SEO title="Home" />
-      <Container fluid className="bg-gradient-orange">
+      <Container fluid className="bg-gradient-orange py-5">
         <Row className="align-items-start align-items-md-center">
           <Col xs={12} md={6}>
             <HeroHeader>
@@ -118,7 +126,7 @@ const IndexPage = () => {
           </Col>
         </Row>
       </ArrowContainer>
-      <FancyContainer height={"auto"}>
+      <Container className="py-5">
         <Row>
           {[0, 1, 2].map((col, index) => (
             <Col xs={12} md={4} className="text-center" key={index}>
@@ -137,7 +145,7 @@ const IndexPage = () => {
             </Col>
           ))}
         </Row>
-      </FancyContainer>
+      </Container>
       <Container className="py-5">
         <Row className="my-5">
           <Col xs={12} md={6}>
@@ -167,9 +175,7 @@ const IndexPage = () => {
             xs={12}
             md={6}
             className="d-flex justify-content-center align-items-center"
-            onClick={() => setIsActive(!isActive)}
           >
-            <StopWatch isActive={isActive} />
           </Col>
           <Col xs={12} md={6}>
             <SectionTitle>We're the best. Period.</SectionTitle>
@@ -187,8 +193,10 @@ const IndexPage = () => {
       </Container>
       <Container className="py-5">
         <Row className="py-5 justify-content-center">
-          <Col xs={12}>
-            <FancyHeader className="text-center text-dark">Testimonials</FancyHeader>
+          <Col xs={12} className="text-center">
+            <FancyHeader className="text-dark">
+              Testimonials
+            </FancyHeader>
           </Col>
           {data.map((client, index) => (
             <Col
@@ -213,6 +221,7 @@ const IndexPage = () => {
         </Row>
       </Container>
     </Layout>
-  )}
+  )
+}
 
 export default IndexPage

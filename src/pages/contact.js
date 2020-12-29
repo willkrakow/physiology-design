@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import SEO from '../components/seo'
+
 import { Container, Form, Col, Row, Button } from 'react-bootstrap'
 import Layout from '../components/layout'
 import { navigate } from 'gatsby'
@@ -33,6 +35,8 @@ export default function Contact() {
   }
 
     return (
+      <>
+      <SEO title="Contact" />
       <Layout>
         <Container fluid className="bg-dark">
           <HeaderContainer header="Let's chat" subheader="Maybe over some beers?" bg="dark" />
@@ -82,6 +86,7 @@ export default function Contact() {
                   <Form.Label>Message</Form.Label>
                   <textarea
                     onChange={handleChange}
+                    name="content"
                     className="bg-dark form-control text-light"
                     placeholder="What's on your mind?"
                     rows="3"
@@ -99,5 +104,6 @@ export default function Contact() {
           </Row>
         </Container>
       </Layout>
+      </>
     )
 }

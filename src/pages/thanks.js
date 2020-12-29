@@ -1,8 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
-import { HeaderContainer } from '../components/containers'
-import ArticleListItem from '../components/article-list-item'
+import { HeaderContainer, ArticleListItem } from '../components/containers'
 import { FancyButton } from '../components/buttons'
 
 const Thanks = ({ data }) => {

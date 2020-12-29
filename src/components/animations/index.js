@@ -1,42 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import React from 'react'
 
-export const flyIn = keyframes`
-  0% {
-    transform: translateX(-1000px);
-  }
-
-  30% {
-    transform: translateX(40px) rotate(20deg);
-  }
-
-  50% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: translateX(0px);
-  }
-`
-
-export const zoomUp = keyframes`
-  0% {
-    transform: scale(0.1) translateX(20px) translateY(20px);
-  }
-
-  25% {
-    transform: scale(0.3) translateX(-20px);
-  }
-
-  50% {
-    transform: scale(0.5) translateY(-20px);
-  }
-
-  100% {
-    transform: scale(1.0);
-  }
-`
-
 
 const Draw = keyframes`
   to {
@@ -62,8 +26,8 @@ const InnerBeat = keyframes`
 
 const HeartBeatWrapper = styled.div`
   z-index: -2;
-  width: 15vw;
-  height: 15vw;
+  width: 250px;
+  height: 250px;
   margin: auto;
   position: absolute;
 `
@@ -132,84 +96,4 @@ export const Heartbeat = () => (
     <InnerCircle />
     <OuterCircle />
   </HeartBeatWrapper>
-)
-
-const WatchWrapper = styled.div`
-position: relative;
-left: 0;
-top: 0;
-width: 250px;
-height: 270px;
-overflow: hidden;
-`
-
-export const OutlineCircle = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 20px);
-  background: transparent;
-  border-radius: 50%;
-  border: 8px solid rgb(240, 72, 72);
-`
-
-
-const handMovement = keyframes`
-0% {
-  transform: rotate(0deg);
-}
-
-100% {
-  transform: rotate(360deg);
-}
-`
-
-const WatchHand = styled.div`
-  position: absolute;
-  height: 4px;
-  width: 100px;
-  top: 165px;
-  left: 150px;
-  animation: ${props => props.isActive ? handMovement : null} 10s infinite linear;
-  transform-origin: bottom right;
-  background-color: rgb(240, 72, 72);
-`
-
-const TopKnob = styled.div`
-  position: absolute;
-  top: 0;
-  left: 125px;
-  width: 50px;
-  height: 20px;
-  border-top-right-radius: 1em;
-  border-top-left-radius: 1em;
-  background-color: transparent;
-  border: 8px solid rgb(240, 72, 72);
-  transform: ${props => props.isActive ? "scaleY(0.5) translateY(4px)" : null };
-  transform-origin: bottom center;
-  transition: transform 0.2s;
-`
-
-// const TickMark = styled.div`
-//   position: relative;
-//   top: calc(-50% + 5px + ${props => props.tick}vw + 1.5vw);
-//   left: calc(-50% - 8px + ${props => props.tick}vw - 3.5vw);
-//   width: 1vw;
-//   height: 1.5vw;
-//   background-color: rgb(240, 72, 72);
-//   transform: rotate(calc(${props => props.tick} * 36deg));
-// `
-
-// const tickArray = [...new Array(12).keys()]
-
-export const StopWatch = ({isActive}) => (
-  <WatchWrapper>
-  <OutlineCircle />
-  <WatchHand isActive={isActive} />
-  <TopKnob isActive={isActive}/>
-  {/* {tickArray.map((tick, index) => (
-    <TickMark key={index} tick={tick}/>
-  ))} */}
-  </WatchWrapper>
 )

@@ -57,6 +57,7 @@ export default function Contact() {
                     onChange={handleChange}
                     className="bg-dark text-light"
                     type="email"
+                    name="email"
                     placeholder="Enter email"
                   />
                   <Form.Text className="text-light">
@@ -69,6 +70,7 @@ export default function Contact() {
                     onChange={handleChange}
                     className="bg-dark text-light"
                     type="text"
+                    name="name"
                     placeholder="Your name"
                   />
                 </Form.Group>
